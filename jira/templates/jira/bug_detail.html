@@ -1,0 +1,46 @@
+{% extends "jira/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <h2 class="article-title">{{ bug.title }}</h2>
+                    <p class="text-muted">ID: {{ bug.id }} | Priority: {{ bug.priority }}</p>
+                    <p class="text-muted">Current Status: {{ bug.get_status_display }} | Assigned To: {{ bug.assigned_to.username }}</p>
+                </div>
+                <p class="article-content">{{ bug.content }}</p>
+
+                <hr>
+                {% if user.is_authenticated %}
+                    <h3>Update Bug Status and Assignment</h3>
+                    <form method="POST" action="{% url 'update-bug' bug.id %}">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="id_status">Change Status:</label>
+                            <select class="form-control" id="id_status" name="status">
+                                <option value="Open" {% if bug.status == 'Open' %}selected{% endif %}>Open</option>
+                                <option value="In Progress" {% if bug.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                <option value="Closed" {% if bug.status == 'Closed' %}selected{% endif %}>Resolved/Closed</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_assign">Assign To:</label>
+                            <div class="input-group">
+                                <span class="form-control">{{ bug.assigned_to.username }}</span>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-info" type="submit" name="assign_self" value="true">
+                                        Assign To Me ({{ user.username }})
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                {% endif %}
+            </div>
+        </article>
+    </div>
+{% endblock content %}

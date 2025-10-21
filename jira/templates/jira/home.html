@@ -1,0 +1,70 @@
+{% extends "jira/base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Open 🔴</h2>
+            {% for bug in bugs %}
+                {% if bug.status == 'Open' %}
+                    <div class="card mb-3 bug-card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ bug.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">ID: {{ bug.id }}</h6>
+                            <p class="card-text">
+                                Priority: {{ bug.priority }}<br>
+                                Assigned to: {{ bug.assigned_to.username }}<br>
+                                Posted: {{ bug.date_posted | date:"F d, Y" }}
+                            </p>
+                            <a href="{% url 'bug-detail' bug.id %}" class="card-link">View Details</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% empty %}
+                <p>No open bugs.</p>
+            {% endfor %}
+        </div>
+
+        <div class="col-md-4">
+            <h2>In Progress 🟡</h2>
+            {% for bug in bugs %}
+                {% if bug.status == 'In Progress' %}
+                    <div class="card mb-3 bug-card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ bug.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">ID: {{ bug.id }}</h6>
+                            <p class="card-text">
+                                Priority: {{ bug.priority }}<br>
+                                Assigned to: {{ bug.assigned_to.username }}<br>
+                                Posted: {{ bug.date_posted | date:"F d, Y" }}
+                            </p>
+                            <a href="{% url 'bug-detail' bug.id %}" class="card-link">View Details</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% empty %}
+                <p>No bugs in progress.</p>
+            {% endfor %}
+        </div>
+
+        <div class="col-md-4">
+            <h2>Resolved/Closed 🟢</h2>
+            {% for bug in bugs %}
+                {% if bug.status == 'Closed' %}
+                    <div class="card mb-3 bug-card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ bug.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">ID: {{ bug.id }}</h6>
+                            <p class="card-text">
+                                Priority: {{ bug.priority }}<br>
+                                Assigned to: {{ bug.assigned_to.username }}<br>
+                                Posted:{{ bug.date_posted | date:"F d, Y" }}
+                            </p>
+                            <a href="{% url 'bug-detail' bug.id %}" class="card-link">View Details</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% empty %}
+                <p>No resolved bugs.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

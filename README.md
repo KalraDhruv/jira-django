@@ -16,4 +16,9 @@ A simple, lightweight bug tracking application built with **Django**. This proje
 * **Backend:** Python, Django
 * **Database:** Default SQLite 
 * **Frontend:** HTML, CSS (with Bootstrap)
-* 
+
+## Videos of website can be found here:
+
+* https://drive.google.com/file/d/1uQRyxXVbaoQrYVqNqIAdxoYLG4KmTsdE/view?usp=sharing
+* https://drive.google.com/file/d/1FIDnnZBf-88aK7Dj41JBYSFCYJ7cbPw5/view?usp=sharing
+* https://drive.google.com/file/d/1AhNAi545UL0aoARz1-AiYZtBcWOJUir3/view?usp=sharing

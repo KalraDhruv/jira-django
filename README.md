@@ -21,4 +21,3 @@ A simple, lightweight bug tracking application built with **Django**. This proje
 
 * https://drive.google.com/file/d/1uQRyxXVbaoQrYVqNqIAdxoYLG4KmTsdE/view?usp=sharing
 * https://drive.google.com/file/d/1FIDnnZBf-88aK7Dj41JBYSFCYJ7cbPw5/view?usp=sharing
-* https://drive.google.com/file/d/1AhNAi545UL0aoARz1-AiYZtBcWOJUir3/view?usp=sharing
